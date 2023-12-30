@@ -5,7 +5,9 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Home Page')
+    return render(request, 'home.html')
+#    return HttpResponse('Home Page')
 
 def room(request):
-    return HttpResponse('Room')
+    return render(request, 'room.html')
+#    return HttpResponse('Room')
