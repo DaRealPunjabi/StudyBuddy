@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.urls import is_valid_path
 from django.contrib import messages
 from django.db.models import Q
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message, User
 from .forms import RoomForm
 
@@ -40,7 +40,9 @@ def loginPage(request):
     context = {}
     return render(request, 'base/login_register.html', context)
 
-
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
